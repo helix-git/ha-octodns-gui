@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}OctoDNS GUI - {{ zone_name }} bearbeiten{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Zone bearbeiten: {{ zone_name }}</h2>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="yaml_content">Zone YAML</label>
+            <textarea name="yaml_content" id="yaml_content">{{ yaml_content }}</textarea>
+        </div>
+
+        <div class="actions">
+            <button type="submit" class="btn">Speichern</button>
+            <a href="{{ url_for('view_zone', zone_name=zone_name) }}" class="btn btn-secondary">Abbrechen</a>
+        </div>
+    </form>
+</div>
+
+<div class="card">
+    <h2>YAML Format</h2>
+    <p style="color: var(--secondary-text-color); font-size: 14px;">
+        OctoDNS Zone Dateien folgen diesem Format:
+    </p>
+    <pre style="background: var(--divider-color); padding: 12px; border-radius: 4px; overflow-x: auto;">
+'':
+  type: A
+  value: 1.2.3.4
+
+www:
+  type: CNAME
+  value: example.com.
+
+mail:
+  type: MX
+  values:
+    - priority: 10
+      value: mail1.example.com.
+    - priority: 20
+      value: mail2.example.com.</pre>
+</div>
+{% endblock %}

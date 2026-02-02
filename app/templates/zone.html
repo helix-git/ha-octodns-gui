@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}OctoDNS GUI - {{ zone_name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h2>Zone: {{ zone_name }}</h2>
+        <a href="{{ url_for('edit_zone', zone_name=zone_name) }}" class="btn">Bearbeiten</a>
+    </div>
+
+    {% if zone_data %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Typ</th>
+                <th>Wert</th>
+                <th>TTL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for name, records in zone_data.items() %}
+                {% if records is mapping %}
+                <tr>
+                    <td>{{ name or '@' }}</td>
+                    <td>{{ records.type }}</td>
+                    <td>{{ records.value or records.values | join(', ') if records.values else '' }}</td>
+                    <td>{{ records.ttl or '-' }}</td>
+                </tr>
+                {% elif records is iterable and records is not string %}
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ name or '@' }}</td>
+                        <td>{{ record.type }}</td>
+                        <td>{{ record.value or record.values | join(', ') if record.values else '' }}</td>
+                        <td>{{ record.ttl or '-' }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="color: var(--secondary-text-color);">Keine Records in dieser Zone.</p>
+    {% endif %}
+</div>
+
+<div class="actions">
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Zurück</a>
+</div>
+{% endblock %}

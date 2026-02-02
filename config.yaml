@@ -1,0 +1,23 @@
+---
+name: "OctoDNS GUI"
+description: "Web-basierte GUI zur Verwaltung von DNS-Zonen mit OctoDNS"
+version: 0.1.0
+slug: "octodns-gui"
+image: "ghcr.io/helix-git/ha-octodns-gui/{arch}"
+init: false
+arch:
+  - aarch64
+  - amd64
+homeassistant_config: true
+ingress: true
+ingress_port: 8100
+ingress_entry: /
+auth_api: true
+map:
+  - config:rw
+options:
+  dns_provider: ""
+  zone_file_path: "/config/octodns"
+schema:
+  dns_provider: str
+  zone_file_path: str

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}OctoDNS GUI - Neue Zone{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Neue Zone erstellen</h2>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="zone_name">Zone Name</label>
+            <input type="text" name="zone_name" id="zone_name"
+                   placeholder="example.com" style="width: 100%; max-width: 400px;">
+            <p style="color: var(--secondary-text-color); font-size: 12px; margin-top: 4px;">
+                z.B. example.com, internal.local
+            </p>
+        </div>
+
+        <div class="actions">
+            <button type="submit" class="btn">Erstellen</button>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Abbrechen</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
