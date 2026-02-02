@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/helix-git/haos-octodns-gui/compare/v0.2.1...v0.3.0) (2026-02-02)
+
+
+### Features
+
+* Add documentation, icons and improve config format ([11adbf0](https://github.com/helix-git/haos-octodns-gui/commit/11adbf0b2a0f3df2c571da7ede27eda86ea4a39b))
+
 ## [0.2.1](https://github.com/helix-git/haos-octodns-gui/compare/v0.2.0...v0.2.1) (2026-02-02)
 
 
