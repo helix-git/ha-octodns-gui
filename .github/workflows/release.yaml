@@ -93,7 +93,7 @@ jobs:
           args: |
             --${{ matrix.arch }} \
             --target . \
-            --image "ha-octodns-gui/{arch}" \
+            --image "haos-octodns-gui/{arch}" \
             --docker-hub "ghcr.io/${{ github.repository_owner }}" \
             --addon
 
