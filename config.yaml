@@ -1,5 +1,5 @@
 ---
-version: 0.2.1
+version: 0.3.0
 slug: octodns-gui
 name: OctoDNS GUI
 description: Web-basierte GUI zur Verwaltung von DNS-Zonen mit OctoDNS
