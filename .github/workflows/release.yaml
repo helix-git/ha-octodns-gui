@@ -64,7 +64,7 @@ jobs:
       - name: Get add-on information
         id: info
         uses: >-
-          home-assistant/actions/helpers/info@55b4a5d23e09d627c2773c2ef82afa98904d65b4
+          home-assistant/actions/helpers/info@d56d093b9ab8d2105bc0cb6ee9bcc0ef4ec8b96d
         with:
           path: "./"
 
